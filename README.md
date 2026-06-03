@@ -1,61 +1,61 @@
 Proyecto: Sistema de Renting de Carros
-Materia: ESTRUCTURA DE DATOS Y LABORATORIODocente: Dennis Arlex Garro AgudeloParcial: 2Porcentaje: 20%Modalidad: Grupos de máximo 3 estudiantesEntrega: Proyecto Java (ANT) comprimido y enviado por correo electrónico
+Materia: ESTRUCTURA DE DATOS Y LABORATORIODocente: Dennis Arlex Garro AgudeloParcial: 2Porcentaje: 20%Modalidad: Grupos de maximo 3 estudiantesEntrega: Proyecto Java (ANT) comprimido y enviado por correo electronico
 INDICACIONES GENERALES:
-LEER(OJO) bien el enunciado completo y lo que se le está pidiendo para que tengan los menores reprocesos y el panorama general de lo que va a realizar.
-La solución se debe mostrar y ejecutar en el lenguaje de programación Java.
-La calificación es unánime para todos los integrantes del grupo.
-En la clase principal no debe existir ningún otro método diferente al main.
-En el método main NO ESTA PERMITIDO realizar ningún proceso diferente a crear el menú principal y llamar los métodos que realizan los procesos específicos. 
-Se deben utilizar diferentes clases, objetos y herencias de estos en los cuales se demuestre el manejo correcto de la programación orientada a objetos.
-Se deben utilizar ciclos, condicionales, métodos, clases, LISTAS , COLAS PILAS OBJETUALES y variables (String, Integer, Float, Boolean, Objetos) demostrando el correcto dominio de estos elementos.
-En las validaciones de los datos se debe utilizar métodos recursivos demostrando el correcto manejo de estos.
-Tenga presente los cuatros principios de la POO: encapsulamiento, herencia, polimorfismo y abstracción en la construcción de la solución.
-Esta permitido consultar y usar parte del código que se ha desarrollado durante el aprendizaje del proceso. 
+LEER(OJO) bien el enunciado completo y lo que se le esta pidiendo para que tengan los menores reprocesos y el panorama general de lo que va a realizar.
+La solucion se debe mostrar y ejecutar en el lenguaje de programacion Java.
+La calificacion es unanime para todos los integrantes del grupo.
+En la clase principal no debe existir ningun otro metodo diferente al main.
+En el metodo main NO ESTA PERMITIDO realizar ningun proceso diferente a crear el menu principal y llamar los metodos que realizan los procesos especificos. 
+Se deben utilizar diferentes clases, objetos y herencias de estos en los cuales se demuestre el manejo correcto de la programacion orientada a objetos.
+Se deben utilizar ciclos, condicionales, metodos, clases, LISTAS , COLAS PILAS OBJETUALES y variables (String, Integer, Float, Boolean, Objetos) demostrando el correcto dominio de estos elementos.
+En las validaciones de los datos se debe utilizar metodos recursivos demostrando el correcto manejo de estos.
+Tenga presente los cuatros principios de la POO: encapsulamiento, herencia, polimorfismo y abstraccion en la construccion de la solucion.
+Esta permitido consultar y usar parte del codigo que se ha desarrollado durante el aprendizaje del proceso. 
 
-HU1: Configuración inicial del proyecto
-Yo como Product Ownerrequiero que el equipo configure un proyecto Java funcional con estructura limpiapara garantizar la correcta organización del código y aplicación de los principios de POO.
-Criterios de aceptación:
+HU1: Configuracion inicial del proyecto
+Yo como Product Ownerrequiero que el equipo configure un proyecto Java funcional con estructura limpiapara garantizar la correcta organizacion del codigo y aplicacion de los principios de POO.
+Criterios de aceptacion:
 El proyecto se crea en Java.
-Existe una clase principal con un único método main.
-El método main solo contiene el menú principal y llamadas a métodos externos.
-Se aplican los cuatro principios de POO: encapsulamiento, herencia, polimorfismo y abstracción.
-Se implementan validaciones con métodos recursivos.
-Se utilizan estructuras de control (ciclos, condicionales) y vectores dinámicos.
+Existe una clase principal con un unico metodo main.
+El metodo main solo contiene el menu principal y llamadas a metodos externos.
+Se aplican los cuatro principios de POO: encapsulamiento, herencia, polimorfismo y abstraccion.
+Se implementan validaciones con metodos recursivos.
+Se utilizan estructuras de control (ciclos, condicionales) y vectores dinamicos.
 
-HU2: Creación de clases de clientes
-Yo como Product Ownerrequiero que se creen las clases necesarias para representar los clientes del sistema de rentingpara registrar su información y gestionar sus contratos de alquiler.
-Criterios de aceptación:
+HU2: Creacion de clases de clientes
+Yo como Product Ownerrequiero que se creen las clases necesarias para representar los clientes del sistema de rentingpara registrar su informacion y gestionar sus contratos de alquiler.
+Criterios de aceptacion:
 Crear la clase Cliente con los siguientes atributos:
 Cedula (String) — sin caracteres especiales.
-Nombre (String) — sin números ni caracteres especiales.
-Apellido (String) — sin números ni caracteres especiales.
-Teléfono (String) — solo números.
-Dirección (String).
+Nombre (String) — sin numeros ni caracteres especiales.
+Apellido (String) — sin numeros ni caracteres especiales.
+Telefono (String) — solo numeros.
+Direccion (String).
 LicenciaConduccion (String).
-Las validaciones de los datos se realizan mediante métodos recursivos.
+Las validaciones de los datos se realizan mediante metodos recursivos.
 La clase implementa encapsulamiento (atributos privados y getters/setters).
 
-HU3: Creación de clases de vehículos
-Yo como Product Ownerrequiero que se modelen las clases Vehiculo, CarroSedan y CamionetaSUVpara representar los diferentes tipos de automóviles disponibles en el renting.
-Criterios de aceptación:
+HU3: Creacion de clases de vehiculos
+Yo como Product Ownerrequiero que se modelen las clases Vehiculo, CarroSedan y CamionetaSUVpara representar los diferentes tipos de automoviles disponibles en el renting.
+Criterios de aceptacion:
 Clase base Vehiculo con atributos:
 Placa (String) — sin caracteres especiales.
-Marca (String) — sin números ni símbolos.
+Marca (String) — sin numeros ni simbolos.
 Modelo (int).
 PrecioDiario (float).
 Estado (String): disponible / alquilado.
 Clase CarroSedan hereda de Vehiculo y agrega:
-TipoCombustible (String): gasolina, diésel o eléctrico.
-Transmisión (String): automática o manual.
+TipoCombustible (String): gasolina, diesel o electrico.
+Transmision (String): automatica o manual.
 Clase CamionetaSUV hereda de Vehiculo y agrega:
-Tracción (String): 4x2 o 4x4.
+Traccion (String): 4x2 o 4x4.
 CapacidadMaletero (float) — en litros.
 Todos los campos de texto se validan sin caracteres especiales.
-Los precios y capacidades deben ser numéricos positivos.
+Los precios y capacidades deben ser numericos positivos.
 
-HU4: Gestión de renting
-Yo como Product Ownerrequiero que el sistema permita registrar, modificar, devolver y consultar los contratos de rentingpara administrar los alquileres de vehículos de manera ordenada y precisa.
-Criterios de aceptación:
+HU4: Gestion de renting
+Yo como Product Ownerrequiero que el sistema permita registrar, modificar, devolver y consultar los contratos de rentingpara administrar los alquileres de vehiculos de manera ordenada y precisa.
+Criterios de aceptacion:
 Crear la clase ContratoRenting con los atributos:
 IdContrato (String).
 CedulaCliente (String).
@@ -64,65 +64,65 @@ FechaInicio (String).
 FechaFin (String).
 TotalDias (int).
 ValorTotal (float).
-No se permite alquilar más de un vehículo por cliente al mismo tiempo.
-No se permite alquilar un vehículo que esté en estado “alquilado”.
-Los contratos pueden modificarse solo en los campos de fecha o duración.
-El IdContrato, la cédula del cliente y la placa no pueden modificarse una vez registrados.
+No se permite alquilar mas de un vehiculo por cliente al mismo tiempo.
+No se permite alquilar un vehiculo que este en estado “alquilado”.
+Los contratos pueden modificarse solo en los campos de fecha o duracion.
+El IdContrato, la cedula del cliente y la placa no pueden modificarse una vez registrados.
 
-HU5: Creación del menú principal
-Yo como Product Ownerrequiero un menú principal que centralice todas las opciones de gestiónpara que los usuarios puedan navegar fácilmente entre las funcionalidades del sistema.
-Criterios de aceptación:
-1. GESTIÓN DE CLIENTES
+HU5: Creacion del menu principal
+Yo como Product Ownerrequiero un menu principal que centralice todas las opciones de gestionpara que los usuarios puedan navegar facilmente entre las funcionalidades del sistema.
+Criterios de aceptacion:
+1. GESTIoN DE CLIENTES
    1.1 Registrar cliente
    1.2 Modificar cliente
    1.3 Eliminar cliente
    1.4 Buscar cliente
-   1.5 Volver al menú principal
+   1.5 Volver al menu principal
 
-2. GESTIÓN DE VEHÍCULOS
-   2.1 Registrar vehículo
-   2.2 Modificar vehículo
-   2.3 Eliminar vehículo
-   2.4 Buscar vehículo
-   2.5 Volver al menú principal
+2. GESTIoN DE VEHiCULOS
+   2.1 Registrar vehiculo
+   2.2 Modificar vehiculo
+   2.3 Eliminar vehiculo
+   2.4 Buscar vehiculo
+   2.5 Volver al menu principal
 
-3. GESTIÓN DE CONTRATOS DE RENTING
+3. GESTION DE CONTRATOS DE RENTING
    3.1 Registrar nuevo contrato
    3.2 Modificar contrato
-   3.3 Finalizar contrato (devolución)
+   3.3 Finalizar contrato (devolucion)
    3.4 Buscar contrato
-   3.5 Volver al menú principal
+   3.5 Volver al menu principal
 
 4. IMPRIMIR INFORME GENERAL
 
 5. SALIR DEL SISTEMA
-El main solo despliega el menú y llama los métodos asociados.
-El menú permite volver al principal sin reiniciar el programa.
+El main solo despliega el menu y llama los metodos asociados.
+El menu permite volver al principal sin reiniciar el programa.
 
-HU6: Implementación de estructuras dinámicas
-Yo como Product Ownerrequiero que los registros se almacenen en vectores dinámicospara permitir la gestión de los datos sin tamaño fijo.
-Criterios de aceptación:
+HU6: Implementacion de estructuras dinamicas
+Yo como Product Ownerrequiero que los registros se almacenen en vectores dinamicospara permitir la gestion de los datos sin tamaño fijo.
+Criterios de aceptacion:
 Crear estructuras:
 vector_clientes
 vector_vehiculos
 vector_contratos
-Al agregar un elemento, el vector crece dinámicamente.
+Al agregar un elemento, el vector crece dinamicamente.
 Al eliminar, el vector reduce su tamaño.
-Los datos permanecen sincronizados (si se elimina un cliente, su contrato también).
+Los datos permanecen sincronizados (si se elimina un cliente, su contrato tambien).
 
-HU7: Impresión de informes y consultas
-Yo como Product Ownerrequiero que el sistema pueda imprimir y listar todos los datos registradospara tener visibilidad general de los clientes, vehículos y contratos activos.
-Criterios de aceptación:
+HU7: Impresion de informes y consultas
+Yo como Product Ownerrequiero que el sistema pueda imprimir y listar todos los datos registradospara tener visibilidad general de los clientes, vehiculos y contratos activos.
+Criterios de aceptacion:
 El informe muestra todos los registros en formato ordenado y legible.
 Se agrupan los contratos activos y los finalizados.
 Se calcula el total de ingresos generados por renting.
-Se aplican métodos sobrecargados para imprimir información por tipo (cliente, vehículo, contrato).
+Se aplican metodos sobrecargados para imprimir informacion por tipo (cliente, vehiculo, contrato).
 
 HU8: Validaciones finales y control de flujo
 Yo como Product Ownerrequiero que el sistema aplique validaciones consistentespara asegurar la integridad de los datos y la estabilidad del programa.
-Criterios de aceptación:
-Las validaciones de entrada se realizan mediante métodos recursivos.
-Se evitan errores por campos vacíos o tipos incorrectos.
+Criterios de aceptacion:
+Las validaciones de entrada se realizan mediante metodos recursivos.
+Se evitan errores por campos vacios o tipos incorrectos.
 Se manejan adecuadamente las excepciones (try-catch).
-Las opciones de menú inválidas son controladas sin cerrar el programa.
-Todos los atributos están encapsulados con getters y setters.
+Las opciones de menu invalidas son controladas sin cerrar el programa.
+Todos los atributos estan encapsulados con getters y setters.

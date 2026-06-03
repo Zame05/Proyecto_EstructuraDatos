@@ -8,30 +8,15 @@ public class ContratoRenting {
     private int totalDias;
     private float valorTotal;
 
-    public ContratoRenting(String idContrato, String cedulaCliente, String placaVehiculo, String fechaInicio, String fechaFin, int totalDias, float valorTotal) {
-        if (!Validaciones.noVacio(idContrato, 0))
-            throw new IllegalArgumentException("IdContrato inválido.");
-        if (!Validaciones.soloNumeros(cedulaCliente, 0) || !Validaciones.noVacio(cedulaCliente, 0))
-            throw new IllegalArgumentException("Cédula del cliente inválida.");
-        if (!Validaciones.alfanumerico(placaVehiculo, 0) || !Validaciones.noVacio(placaVehiculo, 0))
-            throw new IllegalArgumentException("Placa del vehículo inválida.");
-        if (!Validaciones.noVacio(fechaInicio, 0))
-            throw new IllegalArgumentException("Fecha de inicio inválida.");
-        if (!Validaciones.noVacio(fechaFin, 0))
-            throw new IllegalArgumentException("Fecha de fin inválida.");
-        if (!Validaciones.esPositivo(totalDias))
-            throw new IllegalArgumentException("Total de días inválido.");
-        if (!Validaciones.esPositivoDecimal(valorTotal))
-            throw new IllegalArgumentException("Valor total inválido.");
-
-        this.idContrato = idContrato;
-        this.cedulaCliente = cedulaCliente;
-        this.placaVehiculo = placaVehiculo;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.totalDias = totalDias;
-        this.valorTotal = valorTotal;
-    }
+public ContratoRenting(String idContrato, String cedulaCliente, String placaVehiculo, String fechaInicio, String fechaFin, int totalDias, float valorTotal) {
+    this.idContrato = idContrato;
+    this.cedulaCliente = cedulaCliente;
+    this.placaVehiculo = placaVehiculo;
+    this.fechaInicio = fechaInicio;
+    this.fechaFin = fechaFin;
+    this.totalDias = totalDias;
+    this.valorTotal = valorTotal;
+}
 
     public String getIdContrato() { return idContrato; }
     public String getCedulaCliente() { return cedulaCliente; }
@@ -42,7 +27,7 @@ public class ContratoRenting {
         if (Validaciones.noVacio(fechaInicio, 0))
             this.fechaInicio = fechaInicio;
         else
-            System.out.println("Fecha de inicio inválida.");
+            System.out.println("Fecha de inicio invalida.");
     }
 
     public String getFechaFin() { return fechaFin; }
@@ -50,7 +35,7 @@ public class ContratoRenting {
         if (Validaciones.noVacio(fechaFin, 0))
             this.fechaFin = fechaFin;
         else
-            System.out.println("Fecha de fin inválida.");
+            System.out.println("Fecha de fin invalida.");
     }
 
     public int getTotalDias() { return totalDias; }
@@ -58,7 +43,7 @@ public class ContratoRenting {
         if (Validaciones.esPositivo(totalDias))
             this.totalDias = totalDias;
         else
-            System.out.println("Total de días inválido.");
+            System.out.println("Total de dias invalido.");
     }
 
     public float getValorTotal() { return valorTotal; }
@@ -66,13 +51,13 @@ public class ContratoRenting {
         if (Validaciones.esPositivoDecimal(valorTotal))
             this.valorTotal = valorTotal;
         else
-            System.out.println("Valor total inválido.");
+            System.out.println("Valor total invalido.");
     }
 
     public String toString() {
         return "Contrato [ID: " + idContrato + ", Cliente: " + cedulaCliente +
-               ", Vehículo: " + placaVehiculo + ", Inicio: " + fechaInicio +
-               ", Fin: " + fechaFin + ", Días: " + totalDias +
+               ", Vehiculo: " + placaVehiculo + ", Inicio: " + fechaInicio +
+               ", Fin: " + fechaFin + ", Dias: " + totalDias +
                ", Valor: $" + valorTotal + "]";
     }
 }

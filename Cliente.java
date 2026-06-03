@@ -8,19 +8,6 @@ public class Cliente {
     private String licenciaConduccion;
 
     public Cliente(String cedula, String nombre, String apellido, String telefono, String direccion, String licenciaConduccion) {
-        if (!Validaciones.soloNumeros(cedula, 0) || !Validaciones.noVacio(cedula, 0))
-            throw new IllegalArgumentException("Cédula inválida.");
-        if (!Validaciones.soloLetras(nombre, 0) || !Validaciones.noVacio(nombre, 0))
-            throw new IllegalArgumentException("Nombre inválido.");
-        if (!Validaciones.soloLetras(apellido, 0) || !Validaciones.noVacio(apellido, 0))
-            throw new IllegalArgumentException("Apellido inválido.");
-        if (!Validaciones.soloNumeros(telefono, 0) || !Validaciones.noVacio(telefono, 0))
-            throw new IllegalArgumentException("Teléfono inválido.");
-        if (!Validaciones.noVacio(direccion, 0))
-            throw new IllegalArgumentException("Dirección inválida.");
-        if (!Validaciones.alfanumerico(licenciaConduccion, 0) || !Validaciones.noVacio(licenciaConduccion, 0))
-            throw new IllegalArgumentException("Licencia inválida.");
-
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -33,7 +20,7 @@ public class Cliente {
         if (Validaciones.soloNumeros(cedula, 0) && Validaciones.noVacio(cedula, 0))
             this.cedula = cedula;
         else
-            System.out.println("Cédula inválida: solo números, sin caracteres especiales.");
+            System.out.println("Cedula invalida: solo numeros, sin caracteres especiales.");
     }
 
 
@@ -41,7 +28,7 @@ public class Cliente {
         if (Validaciones.soloLetras(nombre, 0) && Validaciones.noVacio(nombre, 0))
             this.nombre = nombre;
         else
-            System.out.println("Nombre inválido: solo letras, sin números ni caracteres especiales.");
+            System.out.println("Nombre invalido: solo letras, sin numeros ni caracteres especiales.");
     }
 
 
@@ -49,14 +36,14 @@ public class Cliente {
         if (Validaciones.soloLetras(apellido, 0) && Validaciones.noVacio(apellido, 0))
             this.apellido = apellido;
         else
-            System.out.println("Apellido inválido: solo letras, sin números ni caracteres especiales.");
+            System.out.println("Apellido invalido: solo letras, sin numeros ni caracteres especiales.");
     }
 
     public void setTelefono(String telefono) {
         if (Validaciones.soloNumeros(telefono, 0) && Validaciones.noVacio(telefono, 0))
             this.telefono = telefono;
         else
-            System.out.println("Teléfono inválido: solo números.");
+            System.out.println("Telefono invalido: solo numeros.");
     }
 
 
@@ -64,19 +51,19 @@ public class Cliente {
         if (Validaciones.noVacio(direccion, 0))
             this.direccion = direccion;
         else
-            System.out.println("Dirección inválida: no puede estar vacía.");
+            System.out.println("Direccion invalida: no puede estar vacia.");
     }
 
     public void setLicenciaConduccion(String licenciaConduccion) {
         if (Validaciones.alfanumerico(licenciaConduccion, 0) && Validaciones.noVacio(licenciaConduccion, 0))
             this.licenciaConduccion = licenciaConduccion;
         else
-            System.out.println("Licencia inválida: solo letras y números.");
+            System.out.println("Licencia invalida: solo letras y numeros.");
     }
 
     public String toString() {
-        return "Cliente [Cédula: " + cedula + ", Nombre: " + nombre + " " + apellido +
-               ", Teléfono: " + telefono + ", Dirección: " + direccion +
+        return "Cliente [Cedula: " + cedula + ", Nombre: " + nombre + " " + apellido +
+               ", Telefono: " + telefono + ", Direccion: " + direccion +
                ", Licencia: " + licenciaConduccion + "]";
     }
 

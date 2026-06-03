@@ -7,33 +7,68 @@ public class Metodos {
     private ArrayList<Cliente> vectorClientes = new ArrayList<>();
     private ArrayList<Vehiculo> vectorVehiculos = new ArrayList<>();
     private ArrayList<ContratoRenting> vectorContratos = new ArrayList<>();
-    private Scanner sc = new Scanner(System.in);
 
-    public void registrarCliente() {
+    public void registrarCliente(Scanner sc) {
         try {
             sc.nextLine();
-            System.out.print("Cédula: ");
-            String cedula = sc.nextLine();
-            System.out.print("Nombre: ");
-            String nombre = sc.nextLine();
-            System.out.print("Apellido: ");
-            String apellido = sc.nextLine();
-            System.out.print("Teléfono: ");
-            String telefono = sc.nextLine();
-            System.out.print("Dirección: ");
-            String direccion = sc.nextLine();
-            System.out.print("Licencia de conducción: ");
-            String licencia = sc.nextLine();
+
+            String cedula;
+            do {
+                System.out.print("Cédula: ");
+                cedula = sc.nextLine();
+                if (!Validaciones.soloNumeros(cedula, 0) || !Validaciones.noVacio(cedula, 0))
+                    System.out.println("Cédula inválida: solo números, sin caracteres especiales.");
+            } while (!Validaciones.soloNumeros(cedula, 0) || !Validaciones.noVacio(cedula, 0));
+
+            String nombre;
+            do {
+                System.out.print("Nombre: ");
+                nombre = sc.nextLine();
+                if (!Validaciones.soloLetras(nombre, 0) || !Validaciones.noVacio(nombre, 0))
+                    System.out.println("Nombre inválido: solo letras, sin números ni caracteres especiales.");
+            } while (!Validaciones.soloLetras(nombre, 0) || !Validaciones.noVacio(nombre, 0));
+
+            String apellido;
+            do {
+                System.out.print("Apellido: ");
+                apellido = sc.nextLine();
+                if (!Validaciones.soloLetras(apellido, 0) || !Validaciones.noVacio(apellido, 0))
+                    System.out.println("Apellido inválido: solo letras, sin números ni caracteres especiales.");
+            } while (!Validaciones.soloLetras(apellido, 0) || !Validaciones.noVacio(apellido, 0));
+
+            String telefono;
+            do {
+                System.out.print("Teléfono: ");
+                telefono = sc.nextLine();
+                if (!Validaciones.soloNumeros(telefono, 0) || !Validaciones.noVacio(telefono, 0))
+                    System.out.println("Teléfono inválido: solo números.");
+            } while (!Validaciones.soloNumeros(telefono, 0) || !Validaciones.noVacio(telefono, 0));
+
+            String direccion;
+            do {
+                System.out.print("Dirección: ");
+                direccion = sc.nextLine();
+                if (!Validaciones.noVacio(direccion, 0))
+                    System.out.println("Dirección inválida: no puede estar vacía.");
+            } while (!Validaciones.noVacio(direccion, 0));
+
+            String licencia;
+            do {
+                System.out.print("Licencia de conducción: ");
+                licencia = sc.nextLine();
+                if (!Validaciones.alfanumerico(licencia, 0) || !Validaciones.noVacio(licencia, 0))
+                    System.out.println("Licencia inválida: solo letras y números.");
+            } while (!Validaciones.alfanumerico(licencia, 0) || !Validaciones.noVacio(licencia, 0));
 
             Cliente c = new Cliente(cedula, nombre, apellido, telefono, direccion, licencia);
             vectorClientes.add(c);
             System.out.println("Cliente registrado exitosamente.");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al registrar cliente: " + e.getMessage());
         }
     }
 
-    public void modificarCliente() {
+    public void modificarCliente(Scanner sc) {
         try {
             sc.nextLine();
             System.out.print("Ingrese la cédula del cliente a modificar: ");
@@ -55,7 +90,7 @@ public class Metodos {
         }
     }
 
-    public void eliminarCliente() {
+    public void eliminarCliente(Scanner sc) {
         try {
             sc.nextLine();
             System.out.print("Ingrese la cédula del cliente a eliminar: ");
@@ -75,7 +110,7 @@ public class Metodos {
         }
     }
 
-    public void buscarCliente() {
+    public void buscarCliente(Scanner sc) {
         try {
             sc.nextLine();
             System.out.print("Ingrese la cédula del cliente: ");
@@ -98,52 +133,118 @@ public class Metodos {
         return null;
     }
 
-    public void registrarVehiculo() {
-        try {
-            sc.nextLine();
-            System.out.println("Tipo de vehículo:");
-            System.out.println("1. Carro Sedan");
-            System.out.println("2. Camioneta SUV");
+public void registrarVehiculo(Scanner sc) {
+    try {
+        sc.nextLine();
+
+        System.out.println("Tipo de vehículo:");
+        System.out.println("1. Carro Sedan");
+        System.out.println("2. Camioneta SUV");
+        int tipo;
+        do {
             System.out.print("Seleccione: ");
-            int tipo = sc.nextInt();
-            sc.nextLine();
-
-            System.out.print("Placa: ");
-            String placa = sc.nextLine();
-            System.out.print("Marca: ");
-            String marca = sc.nextLine();
-            System.out.print("Modelo (año): ");
-            int modelo = sc.nextInt();
-            System.out.print("Precio diario: ");
-            float precio = sc.nextFloat();
-            sc.nextLine();
-
-            if (tipo == 1) {
-                System.out.print("Tipo de combustible (gasolina/diesel/electrico): ");
-                String combustible = sc.nextLine();
-                System.out.print("Transmisión (automatica/manual): ");
-                String transmision = sc.nextLine();
-                vectorVehiculos.add(new CarroSedan(placa, marca, modelo, precio, combustible, transmision));
-            } else if (tipo == 2) {
-                System.out.print("Tracción (4x2/4x4): ");
-                String traccion = sc.nextLine();
-                System.out.print("Capacidad maletero (litros): ");
-                float maletero = sc.nextFloat();
-                vectorVehiculos.add(new CamionetaSUV(placa, marca, modelo, precio, traccion, maletero));
-            } else {
-                System.out.println("Tipo de vehículo inválido.");
-                return;
+            while (!sc.hasNextInt()) {
+                System.out.println("Tipo inválido: ingrese 1 o 2.");
+                sc.nextLine();
             }
-            System.out.println("Vehículo registrado exitosamente.");
-        } catch (InputMismatchException e) {
-            System.out.println("Error: ingrese un valor numérico donde corresponde.");
+            tipo = sc.nextInt();
             sc.nextLine();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
+            if (tipo != 1 && tipo != 2)
+                System.out.println("Tipo inválido: ingrese 1 o 2.");
+        } while (tipo != 1 && tipo != 2);
 
-    public void modificarVehiculo() {
+        String placa;
+        do {
+            System.out.print("Placa: ");
+            placa = sc.nextLine();
+            if (!Validaciones.alfanumerico(placa, 0) || !Validaciones.noVacio(placa, 0))
+                System.out.println("Placa inválida: solo letras y números.");
+        } while (!Validaciones.alfanumerico(placa, 0) || !Validaciones.noVacio(placa, 0));
+
+        String marca;
+        do {
+            System.out.print("Marca: ");
+            marca = sc.nextLine();
+            if (!Validaciones.soloLetras(marca, 0) || !Validaciones.noVacio(marca, 0))
+                System.out.println("Marca inválida: solo letras, sin números ni símbolos.");
+        } while (!Validaciones.soloLetras(marca, 0) || !Validaciones.noVacio(marca, 0));
+
+        int modelo;
+        do {
+            System.out.print("Modelo (año): ");
+            while (!sc.hasNextInt()) {
+                System.out.println("Modelo inválido: ingrese un número.");
+                sc.nextLine();
+            }
+            modelo = sc.nextInt();
+            sc.nextLine();
+            if (!Validaciones.enRango(modelo, 1990, 2026))
+                System.out.println("Modelo inválido: debe estar entre 1990 y 2026.");
+        } while (!Validaciones.enRango(modelo, 1990, 2026));
+
+        float precio;
+        do {
+            System.out.print("Precio diario: ");
+            while (!sc.hasNextFloat()) {
+                System.out.println("Precio inválido: ingrese un número positivo.");
+                sc.nextLine();
+            }
+            precio = sc.nextFloat();
+            sc.nextLine();
+            if (!Validaciones.esPositivoDecimal(precio))
+                System.out.println("Precio inválido: debe ser mayor a 0.");
+        } while (!Validaciones.esPositivoDecimal(precio));
+
+        if (tipo == 1) {
+            String combustible;
+            do {
+                System.out.print("Tipo de combustible (gasolina/diesel/electrico): ");
+                combustible = sc.nextLine();
+                if (!combustible.equals("gasolina") && !combustible.equals("diesel") && !combustible.equals("electrico"))
+                    System.out.println("Combustible inválido: gasolina, diesel o electrico.");
+            } while (!combustible.equals("gasolina") && !combustible.equals("diesel") && !combustible.equals("electrico"));
+
+            String transmision;
+            do {
+                System.out.print("Transmisión (automatica/manual): ");
+                transmision = sc.nextLine();
+                if (!transmision.equals("automatica") && !transmision.equals("manual"))
+                    System.out.println("Transmisión inválida: automatica o manual.");
+            } while (!transmision.equals("automatica") && !transmision.equals("manual"));
+
+            vectorVehiculos.add(new CarroSedan(placa, marca, modelo, precio, combustible, transmision));
+
+        } else {
+            String traccion;
+            do {
+                System.out.print("Tracción (4x2/4x4): ");
+                traccion = sc.nextLine();
+                if (!traccion.equals("4x2") && !traccion.equals("4x4"))
+                    System.out.println("Tracción inválida: 4x2 o 4x4.");
+            } while (!traccion.equals("4x2") && !traccion.equals("4x4"));
+
+            float maletero;
+            do {
+                System.out.print("Capacidad maletero (litros): ");
+                while (!sc.hasNextFloat()) {
+                    System.out.println("Capacidad inválida: ingrese un número positivo.");
+                    sc.nextLine();
+                }
+                maletero = sc.nextFloat();
+                sc.nextLine();
+                if (!Validaciones.esPositivoDecimal(maletero))
+                    System.out.println("Capacidad inválida: debe ser mayor a 0.");
+            } while (!Validaciones.esPositivoDecimal(maletero));
+
+            vectorVehiculos.add(new CamionetaSUV(placa, marca, modelo, precio, traccion, maletero));
+        }
+
+        System.out.println("Vehículo registrado exitosamente.");
+    } catch (Exception e) {
+        System.out.println("Error al registrar vehículo: " + e.getMessage());
+    }
+}
+    public void modificarVehiculo(Scanner sc) {
         try {
             sc.nextLine();
             System.out.print("Ingrese la placa del vehículo a modificar: ");
@@ -164,7 +265,7 @@ public class Metodos {
         }
     }
 
-    public void eliminarVehiculo() {
+    public void eliminarVehiculo(Scanner sc) {
         try {
             sc.nextLine();
             System.out.print("Ingrese la placa del vehículo a eliminar: ");
@@ -188,7 +289,7 @@ public class Metodos {
         }
     }
 
-    public void buscarVehiculo() {
+    public void buscarVehiculo(Scanner sc) {
         try {
             sc.nextLine();
             System.out.print("Ingrese la placa del vehículo: ");
@@ -211,62 +312,109 @@ public class Metodos {
         return null;
     }
 
-    public void registrarContrato() {
-        try {
-            sc.nextLine();
+public void registrarContrato(Scanner sc) {
+    try {
+        sc.nextLine();
+
+        String id;
+        do {
             System.out.print("ID del contrato: ");
-            String id = sc.nextLine();
-            System.out.print("Cédula del cliente: ");
-            String cedula = sc.nextLine();
-            System.out.print("Placa del vehículo: ");
-            String placa = sc.nextLine();
+            id = sc.nextLine();
+            if (!Validaciones.noVacio(id, 0))
+                System.out.println("ID inválido: no puede estar vacío.");
+        } while (!Validaciones.noVacio(id, 0));
 
-            Cliente cliente = buscarClientePorCedula(cedula);
-            if (cliente == null) {
-                System.out.println("Cliente no encontrado.");
-                return;
-            }
+        String cedula;
+        do {
+            System.out.print("Cédula del cliente: ");
+            cedula = sc.nextLine();
+            if (!Validaciones.soloNumeros(cedula, 0) || !Validaciones.noVacio(cedula, 0))
+                System.out.println("Cédula inválida: solo números.");
+        } while (!Validaciones.soloNumeros(cedula, 0) || !Validaciones.noVacio(cedula, 0));
 
-            Vehiculo vehiculo = buscarVehiculoPorPlaca(placa);
-            if (vehiculo == null) {
-                System.out.println("Vehículo no encontrado.");
-                return;
-            }
-
-            if (vehiculo.getEstado().equals("alquilado")) {
-                System.out.println("El vehículo ya está alquilado.");
-                return;
-            }
-
-            for (ContratoRenting c : vectorContratos) {
-                if (c.getCedulaCliente().equals(cedula)) {
-                    System.out.println("El cliente ya tiene un contrato activo.");
-                    return;
-                }
-            }
-
-            System.out.print("Fecha inicio (DD/MM/AAAA): ");
-            String fechaInicio = sc.nextLine();
-            System.out.print("Fecha fin (DD/MM/AAAA): ");
-            String fechaFin = sc.nextLine();
-            System.out.print("Total días: ");
-            int dias = sc.nextInt();
-            System.out.print("Valor total: ");
-            float valor = sc.nextFloat();
-
-            ContratoRenting contrato = new ContratoRenting(id, cedula, placa, fechaInicio, fechaFin, dias, valor);
-            vectorContratos.add(contrato);
-            vehiculo.setEstado("alquilado");
-            System.out.println("Contrato registrado exitosamente.");
-        } catch (InputMismatchException e) {
-            System.out.println("Error: ingrese un valor numérico donde corresponde.");
-            sc.nextLine();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
+        Cliente cliente = buscarClientePorCedula(cedula);
+        if (cliente == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
         }
-    }
 
-    public void modificarContrato() {
+        for (ContratoRenting c : vectorContratos) {
+            if (c.getCedulaCliente().equals(cedula)) {
+                System.out.println("El cliente ya tiene un contrato activo.");
+                return;
+            }
+        }
+
+        String placa;
+        do {
+            System.out.print("Placa del vehículo: ");
+            placa = sc.nextLine();
+            if (!Validaciones.alfanumerico(placa, 0) || !Validaciones.noVacio(placa, 0))
+                System.out.println("Placa inválida: solo letras y números.");
+        } while (!Validaciones.alfanumerico(placa, 0) || !Validaciones.noVacio(placa, 0));
+
+        Vehiculo vehiculo = buscarVehiculoPorPlaca(placa);
+        if (vehiculo == null) {
+            System.out.println("Vehículo no encontrado.");
+            return;
+        }
+
+        if (vehiculo.getEstado().equals("alquilado")) {
+            System.out.println("El vehículo ya está alquilado.");
+            return;
+        }
+
+        String fechaInicio;
+        do {
+            System.out.print("Fecha inicio (DD/MM/AAAA): ");
+            fechaInicio = sc.nextLine();
+            if (!Validaciones.noVacio(fechaInicio, 0))
+                System.out.println("Fecha de inicio inválida: no puede estar vacía.");
+        } while (!Validaciones.noVacio(fechaInicio, 0));
+
+        String fechaFin;
+        do {
+            System.out.print("Fecha fin (DD/MM/AAAA): ");
+            fechaFin = sc.nextLine();
+            if (!Validaciones.noVacio(fechaFin, 0))
+                System.out.println("Fecha de fin inválida: no puede estar vacía.");
+        } while (!Validaciones.noVacio(fechaFin, 0));
+
+        int dias;
+        do {
+            System.out.print("Total días: ");
+            while (!sc.hasNextInt()) {
+                System.out.println("Días inválidos: ingrese un número positivo.");
+                sc.nextLine();
+            }
+            dias = sc.nextInt();
+            sc.nextLine();
+            if (!Validaciones.esPositivo(dias))
+                System.out.println("Días inválidos: debe ser mayor a 0.");
+        } while (!Validaciones.esPositivo(dias));
+
+        float valor;
+        do {
+            System.out.print("Valor total: ");
+            while (!sc.hasNextFloat()) {
+                System.out.println("Valor inválido: ingrese un número positivo.");
+                sc.nextLine();
+            }
+            valor = sc.nextFloat();
+            sc.nextLine();
+            if (!Validaciones.esPositivoDecimal(valor))
+                System.out.println("Valor inválido: debe ser mayor a 0.");
+        } while (!Validaciones.esPositivoDecimal(valor));
+
+        ContratoRenting contrato = new ContratoRenting(id, cedula, placa, fechaInicio, fechaFin, dias, valor);
+        vectorContratos.add(contrato);
+        vehiculo.setEstado("alquilado");
+        System.out.println("Contrato registrado exitosamente.");
+    } catch (Exception e) {
+        System.out.println("Error al registrar contrato: " + e.getMessage());
+    }
+}
+    public void modificarContrato(Scanner sc) {
         try {
             sc.nextLine();
             System.out.print("Ingrese el ID del contrato a modificar: ");
@@ -294,7 +442,7 @@ public class Metodos {
         }
     }
 
-    public void finalizarContrato() {
+    public void finalizarContrato(Scanner sc) {
         try {
             sc.nextLine();
             System.out.print("Ingrese el ID del contrato a finalizar: ");
@@ -317,7 +465,7 @@ public class Metodos {
         }
     }
 
-    public void buscarContrato() {
+    public void buscarContrato(Scanner sc) {
         try {
             sc.nextLine();
             System.out.print("Ingrese el ID del contrato: ");
@@ -345,21 +493,21 @@ public class Metodos {
         System.out.println("         INFORME GENERAL DEL SISTEMA");
         System.out.println("========================================");
 
-        System.out.println("\n--- CLIENTES REGISTRADOS ---");
+        System.out.println("\n CLIENTES REGISTRADOS ");
         if (vectorClientes.isEmpty())
             System.out.println("No hay clientes registrados.");
         else
             for (Cliente c : vectorClientes)
                 imprimir(c);
 
-        System.out.println("\n--- VEHÍCULOS REGISTRADOS ---");
+        System.out.println("\n VEHÍCULOS REGISTRADOS ");
         if (vectorVehiculos.isEmpty())
             System.out.println("No hay vehículos registrados.");
         else
             for (Vehiculo v : vectorVehiculos)
                 imprimir(v);
 
-        System.out.println("\n--- CONTRATOS ACTIVOS ---");
+        System.out.println("\n CONTRATOS ACTIVOS ");
         float totalIngresos = 0;
         boolean hayActivos = false;
         for (ContratoRenting c : vectorContratos) {
@@ -370,7 +518,7 @@ public class Metodos {
         if (!hayActivos)
             System.out.println("No hay contratos activos.");
 
-        System.out.println("\n--- TOTAL DE INGRESOS GENERADOS ---");
+        System.out.println("\n TOTAL DE INGRESOS GENERADOS ");
         System.out.println("$ " + totalIngresos);
         System.out.println("========================================");
     }
