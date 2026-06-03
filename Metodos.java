@@ -284,6 +284,51 @@ public class Metodos {
     }
 
     public void imprimirInformeGeneral() {
-        System.out.println("Informe general - por implementar");
+    System.out.println("\n========================================");
+    System.out.println("         INFORME GENERAL DEL SISTEMA");
+    System.out.println("========================================");
+
+    System.out.println("\n--- CLIENTES REGISTRADOS ---");
+    if (vectorClientes.isEmpty()) {
+        System.out.println("No hay clientes registrados.");
+    } else {
+        for (Cliente c : vectorClientes)
+            imprimir(c);
+    }
+
+    System.out.println("\n--- VEHÍCULOS REGISTRADOS ---");
+    if (vectorVehiculos.isEmpty()) {
+        System.out.println("No hay vehículos registrados.");
+    } else {
+        for (Vehiculo v : vectorVehiculos)
+            imprimir(v);
+    }
+
+    System.out.println("\n--- CONTRATOS ACTIVOS ---");
+    float totalIngresos = 0;
+    boolean hayActivos = false;
+    for (ContratoRenting c : vectorContratos) {
+        imprimir(c);
+        totalIngresos += c.getValorTotal();
+        hayActivos = true;
+    }
+    if (!hayActivos)
+        System.out.println("No hay contratos activos.");
+
+    System.out.println("\n--- TOTAL DE INGRESOS GENERADOS ---");
+    System.out.println("$ " + totalIngresos);
+    System.out.println("========================================");
+    }
+
+    private void imprimir(Cliente c) {
+        System.out.println(c.toString());
+    }
+
+    private void imprimir(Vehiculo v) {
+        System.out.println(v.getInfo());
+    }
+
+    private void imprimir(ContratoRenting c) {
+        System.out.println(c.toString());
     }
 }
